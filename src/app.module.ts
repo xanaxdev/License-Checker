@@ -3,9 +3,15 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as process from 'node:process';
+import { ConfigModule } from '@nestjs/config';
+import { TestModule } from './test/test.module';
+import { LicenseModule } from './license/license.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,
@@ -14,8 +20,10 @@ import * as process from 'node:process';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true,
-    })
+      synchronize: true, // Enable this only when u update Code.
+    }),
+    TestModule,
+    LicenseModule
   ],
   controllers: [AppController],
   providers: [AppService],
