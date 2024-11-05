@@ -1,3 +1,4 @@
+// src/license/entities/license-key.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm';
 import { LicenseCompanyData } from './license-company-data.entity';
 import { LicenseExpirationDate } from './license-expiration-date.entity';
@@ -5,14 +6,17 @@ import { LicenseApplicationAssignment } from './license-application-assignment.e
 
 @Entity('license_keys')
 export class LicenseKey {
-  @PrimaryGeneratedColumn('uuid')
-  key_id: string;
+  @PrimaryGeneratedColumn()
+  id: number; // Automatycznie generowany identyfikator
 
   @Column({ type: 'varchar', length: 255, unique: true })
-  key: string;
+  license_key: string; // Klucz licencyjny, ale nie jako główny identyfikator
 
   @Column({ type: 'enum', enum: ['active', 'expired'], default: 'active' })
   status: string;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  created_at: Date;
 
   @OneToOne(() => LicenseCompanyData, (companyData) => companyData.licenseKey)
   companyData: LicenseCompanyData;
