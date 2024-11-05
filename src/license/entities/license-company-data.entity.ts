@@ -3,7 +3,7 @@ import { LicenseKey } from './license-key.entity';
 
 @Entity('license_company_data')
 export class LicenseCompanyData {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: string;
 
   @OneToOne(() => LicenseKey, (licenseKey) => licenseKey.companyData)

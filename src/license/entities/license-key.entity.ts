@@ -7,10 +7,10 @@ import { LicenseApplicationAssignment } from './license-application-assignment.e
 @Entity('license_keys')
 export class LicenseKey {
   @PrimaryGeneratedColumn()
-  id: number; // Automatycznie generowany identyfikator
+  id: number;
 
   @Column({ type: 'varchar', length: 255, unique: true })
-  license_key: string; // Klucz licencyjny, ale nie jako główny identyfikator
+  license_key: string;
 
   @Column({ type: 'enum', enum: ['active', 'expired'], default: 'active' })
   status: string;

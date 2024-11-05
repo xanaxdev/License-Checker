@@ -3,7 +3,7 @@ import { LicenseKey } from './license-key.entity';
 
 @Entity('license_expiration_dates')
 export class LicenseExpirationDate {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: string;
 
   @OneToOne(() => LicenseKey, (licenseKey) => licenseKey.expirationDate)
