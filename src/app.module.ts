@@ -19,7 +19,9 @@ import { LicenseModule } from './license/license.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
-      synchronize: true, // Enable this only when u update Code.
+      // Enable only in Development Mode.
+      // This do AutoMigrate for new database.
+      synchronize: true,
     }),
     LicenseModule
   ],

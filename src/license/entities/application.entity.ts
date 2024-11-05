@@ -3,7 +3,7 @@ import { LicenseApplicationAssignment } from './license-application-assignment.e
 
 @Entity('applications')
 export class Application {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   application_id: string;
 
   @Column({ type: 'varchar', length: 255 })

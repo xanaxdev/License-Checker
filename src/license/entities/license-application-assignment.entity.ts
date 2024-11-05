@@ -4,7 +4,7 @@ import { Application } from './application.entity';
 
 @Entity('license_application_assignments')
 export class LicenseApplicationAssignment {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @ManyToOne(() => LicenseKey, (licenseKey) => licenseKey.applications)

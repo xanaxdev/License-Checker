@@ -6,7 +6,7 @@ import { LicenseApplicationAssignment } from './license-application-assignment.e
 
 @Entity('license_keys')
 export class LicenseKey {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
 
   @Column({ type: 'varchar', length: 255, unique: true })
